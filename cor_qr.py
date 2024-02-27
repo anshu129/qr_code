@@ -40,4 +40,4 @@ qr1 = create_binary_qr(data1)
 qr2 = create_binary_qr(data2)
 
 combined_qr = combine_qrs(qr1, qr2)
-combined_qr.save("combined_qr.png")
+combined_qr.save("combined_qr1.png")
