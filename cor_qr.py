@@ -19,19 +19,17 @@ def combine_qrs(qr1, qr2):
     img2 = qr2.get_image()
     img2.save("img2.png")
 
-    
     pixels1 = img1.getdata()
     pixels2 = img2.getdata()
 
-    # Combine pixels based on logic (bitwise AND in this case)
-    new_pixels = [pixel1 if pixel1 == pixel2 else 255 for pixel1, pixel2 in zip(pixels1, pixels2)]
+    # Combine pixels based on XOR logic
+    new_pixels = [pixel1 ^ pixel2 for pixel1, pixel2 in zip(pixels1, pixels2)]
 
     # Create a new image with the combined pixel data
     combined_img = Image.new("L", img1.size)
     combined_img.putdata(new_pixels)
 
     return combined_img
-
 
 data1 = "QR Code 1 Data"
 data2 = "QR Code 2 Data"
@@ -40,4 +38,4 @@ qr1 = create_binary_qr(data1)
 qr2 = create_binary_qr(data2)
 
 combined_qr = combine_qrs(qr1, qr2)
-combined_qr.save("combined_qr1.png")
+combined_qr.save("combined_qr_xor.png")
