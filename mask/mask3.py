@@ -1,19 +1,14 @@
 from PIL import Image
 
-
-# Create an empty image with the same dimensions
 output_img = Image.new("L", (21,21))
 
-# Loop over the bottom half of the image
+
 for i in range(21):
     for j in range(21):
-        # Calculate the pixel value based on (i+j) mod2
         if (i+j) % 3 == 0:
             pixel_value = 0
         else:
             pixel_value = 255
-
-        # Set the pixel value in the output image
         output_img.putpixel((j, i), pixel_value)
 for i in range(9):
     for j in range(9):
